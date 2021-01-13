@@ -1,75 +1,72 @@
 body {
     background: #2e353d;
-    width: 500px;
+    max-width: 1024px;
     margin: 0 auto;
     color: white;
 }
 
-.header_main_title {
-    
-    font-weight: 100;
-    text-align: center;
+.header {
+    display: flex;
+    justify-content: flex-end;
+    background-color: #2e3530;
+    &_cart-btn {
+        width: 150px;
+        padding: 15px;
+        margin: 10px;
+        color: white;
+        background: #007b32;
+        border: none;
+        border-radius: 55%;
+        outline: none;
+        cursor: pointer;
+    }
+    &_cart-btn:hover {
+        background: #009641;
+    }
+
+    &_cart-btn:active {
+        background: #9cfb02;
+        color: black;
+    }
+
+    margin-bottom: 20px;
 }
 
-.header_title {
-    font-weight: 90;
-    text-align: center;
-}
-
-.main {
+.products {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-}
+    justify-content: space-around;
 
-button {
-    width: 150px;
-    padding: 15px;
-    margin: 10px;
-    color: white;
-    background: #007b32;
-    border: none;
-    outline: none;
-    cursor: pointer;
-}
+    &_item {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        list-style: none;
+        background-color: gray;
+        border-radius: 10%;
+        border: 2px solid black;
+        width: 30%;
+        height: 250px;
+        margin-bottom: 10px;
+        &_buy-btn {
+            width: 150px;
+            padding: 15px;
+            color: white;
+            background: #007b32;
+            border: none;
+            border-radius: 55%;
+            outline: none;
+            cursor: pointer;
+        }
+        &_buy-btn:hover {
+            background: #009641;
+        }
+    
+        &_buy-btn:active {
+            background: #9cfb02;
+            color: black;
+        }
+    }
 
-button:hover {
-    background: #009641;
-}
-
-button:active {
-    background: #9cfb02;
-    color: black;
-}
-
-#game {
-    border-collapse: collapse;
-    margin: 30px 0;
-    min-height: 484px;
-}
-
-td {
-    width: 20px;
-    height: 20px;
-    border: 1px solid #eee;
-}
-
-.food {
-    background: #00d021;
-}
-
-.wall {
-    background-color: red;
-}
-
-.snakeBody {
-    background: #e5e5e5;
-}
-
-#message {
-    color: orange;
-    font-size: 24px;
-    width: 100%;
-    text-align: center;
 }

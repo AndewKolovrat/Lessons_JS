@@ -1,82 +1,91 @@
 body {
   background: #2e353d;
-  width: 500px;
+  max-width: 1024px;
   margin: 0 auto;
   color: white;
 }
 
-.header_main_title {
-  font-weight: 100;
-  text-align: center;
-}
-
-.header_title {
-  font-weight: 90;
-  text-align: center;
-}
-
-.main {
+.header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  background-color: #2e3530;
+  margin-bottom: 20px;
 }
 
-button {
+.header_cart-btn {
   width: 150px;
   padding: 15px;
   margin: 10px;
   color: white;
   background: #007b32;
   border: none;
+  border-radius: 55%;
   outline: none;
   cursor: pointer;
 }
 
-button:hover {
+.header_cart-btn:hover {
   background: #009641;
 }
 
-button:active {
+.header_cart-btn:active {
   background: #9cfb02;
   color: black;
 }
 
-#game {
-  border-collapse: collapse;
-  margin: 30px 0;
-  min-height: 484px;
+.products {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
-td {
-  width: 20px;
-  height: 20px;
-  border: 1px solid #eee;
+.products_item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  list-style: none;
+  background-color: gray;
+  border-radius: 10%;
+  border: 2px solid black;
+  width: 30%;
+  height: 250px;
+  margin-bottom: 10px;
 }
 
-.food {
-  background: #00d021;
+.products_item_buy-btn {
+  width: 150px;
+  padding: 15px;
+  color: white;
+  background: #007b32;
+  border: none;
+  border-radius: 55%;
+  outline: none;
+  cursor: pointer;
 }
 
-.wall {
-  background-color: red;
+.products_item_buy-btn:hover {
+  background: #009641;
 }
 
-.snakeBody {
-  background: #e5e5e5;
-}
-
-#message {
-  color: orange;
-  font-size: 24px;
-  width: 100%;
-  text-align: center;
+.products_item_buy-btn:active {
+  background: #9cfb02;
+  color: black;
 }
 /*# sourceMappingURL=style.css.map */
