@@ -65,7 +65,7 @@ body {
   border-radius: 10%;
   border: 2px solid black;
   width: 30%;
-  height: 250px;
+  padding: 10px;
   margin-bottom: 10px;
 }
 
