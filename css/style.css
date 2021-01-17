@@ -88,4 +88,35 @@ body {
   background: #9cfb02;
   color: black;
 }
+
+.header-hamburger {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-bottom: 2px solid;
+}
+
+.info_content {
+  list-style: none;
+}
+
+.burger_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.burger_container_size, .burger_container_fill, .burger_container_topings {
+  width: 30%;
+}
+
+.burger_container_topings_list {
+  list-style: none;
+  padding: 0;
+}
 /*# sourceMappingURL=style.css.map */

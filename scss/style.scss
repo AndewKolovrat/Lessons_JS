@@ -70,3 +70,29 @@ body {
     }
 
 }
+// ************************************************************
+.header-hamburger {
+    display: flex;
+    justify-content: center;
+    border-bottom: 2px solid;
+}
+
+.info_content {
+    list-style: none;
+}
+
+.burger_container {
+    display: flex;
+    justify-content: space-around;
+
+    &_size, &_fill, &_topings {
+        width: 30%;
+    }
+
+    &_topings {
+        &_list {
+            list-style: none;
+            padding: 0;
+        }
+    }
+}

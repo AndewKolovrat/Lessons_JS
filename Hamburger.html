@@ -4,13 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Constructor of Hamburger</title>
+    <title>Lesson_1*</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <header class="header"></header>
+    <header class="header-hamburger">
+        <div class="header_info">
+            <h1 class="info_title">Бургер-калькулятор</h1>
+            <p class="info_text">С учётом выбранных компонентов</p>
+            <ul class="info_content">
+                <li class="info_content_item">Цена:
+                    <span class="info_content_cost"></span> руб
+                </li>
+                <li class="info_content_item">Калорийность:
+                    <span class="info_content_cal"></span> ккал
+                </li>
+            </ul>
+        </div>
+    </header>
     <main class="main">
+
+        <div class="burger_container">
+            <div class="burger_container_size">
+                <h2>Размер</h2>
+                <select class="burger_container_size_select"></select>
+            </div>
+            <div class="burger_container_fill">
+                <h2>Начинка</h2>
+                <select class="burger_container_fill_select"></select>
+            </div>
+            <div class="burger_container_topings">
+                <h2>Топинги</h2>
+                <ul class="burger_container_topings_list"></ul>
+            </div>
+
     </main>
 
     <footer class="footer"></footer>
