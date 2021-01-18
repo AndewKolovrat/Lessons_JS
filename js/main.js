@@ -29,9 +29,11 @@ class ProductsList {
         console.log(`Total product price - ${this.some()}.`);
     }
 
-    some() {
+    getTotalPrice() {
         let totalPrices = 0;
-        for (let el of this.products) totalPrices += el.price;
+        for (let el of this.products) {
+            totalPrices += el.price;
+        }
         return totalPrices;
     }
 

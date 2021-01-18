@@ -83,7 +83,7 @@ class Hamburger {
     // функция удаляющая "добавку"
     removeTopping(topping) {
         const index = this.topings.indexOf(topping);
-        if (index != -1)
+        if (index !== -1)
             this.topings.splice(index, 1);
         this._calc();
     }
