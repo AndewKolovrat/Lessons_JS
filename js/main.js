@@ -67,8 +67,21 @@ class Cart {
         // отрисовка корзины
         this._render();
     }
+
+    // Добавление товара в корзину
+    addItem(item) { }
+
+    // удаление товара из корзины
+    removeItem(item) { }
+
+    // очистка корзины
+    clear() { }
+
+    // оформление заказа
+    createOrder() { }
+
     // функция получение полной стоимости корзины
-    some() {
+    getTotalPrice() {
         let totalPrices = 0;
         for (let el of this.items) totalPrices += el.some();
         return totalPrices;
@@ -83,15 +96,13 @@ class Cart {
 class CartItem extends Product {
     // конструктор 
     constructor(product, count = 1) {
-        // вызываем родительский конструктор
-        super(product);
         // добавляем нужную нам переменную
         // количество товаров на данную позицию.
         this.count = count;
     }
     // позиции возвращает стоимость товара согластно
     // кол-ву и цене на данную позицию
-    some() {
+    getTotalPrice() {
         return this.price * this.count;
     }
     // позиции для генерации HTML элемента.  
