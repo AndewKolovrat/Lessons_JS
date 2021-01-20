@@ -1,75 +1,98 @@
 body {
     background: #2e353d;
-    width: 500px;
+    max-width: 1024px;
     margin: 0 auto;
     color: white;
 }
 
-.header_main_title {
-    
-    font-weight: 100;
-    text-align: center;
+.header {
+    display: flex;
+    justify-content: flex-end;
+    background-color: #2e3530;
+    &_cart-btn {
+        width: 150px;
+        padding: 15px;
+        margin: 10px;
+        color: white;
+        background: #007b32;
+        border: none;
+        border-radius: 55%;
+        outline: none;
+        cursor: pointer;
+    }
+    &_cart-btn:hover {
+        background: #009641;
+    }
+
+    &_cart-btn:active {
+        background: #9cfb02;
+        color: black;
+    }
+
+    margin-bottom: 20px;
 }
 
-.header_title {
-    font-weight: 90;
-    text-align: center;
-}
-
-.main {
+.products {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    justify-content: space-around;
+
+    &_item {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        list-style: none;
+        background-color: gray;
+        border-radius: 10%;
+        border: 2px solid black;
+        width: 30%;
+        padding: 10px;
+        margin-bottom: 10px;
+        &_buy-btn {
+            width: 150px;
+            padding: 15px;
+            color: white;
+            background: #007b32;
+            border: none;
+            border-radius: 55%;
+            outline: none;
+            cursor: pointer;
+        }
+        &_buy-btn:hover {
+            background: #009641;
+        }
+    
+        &_buy-btn:active {
+            background: #9cfb02;
+            color: black;
+        }
+    }
+
+}
+// ************************************************************
+.header-hamburger {
+    display: flex;
     justify-content: center;
+    border-bottom: 2px solid;
 }
 
-button {
-    width: 150px;
-    padding: 15px;
-    margin: 10px;
-    color: white;
-    background: #007b32;
-    border: none;
-    outline: none;
-    cursor: pointer;
+.info_content {
+    list-style: none;
 }
 
-button:hover {
-    background: #009641;
-}
+.burger_container {
+    display: flex;
+    justify-content: space-around;
 
-button:active {
-    background: #9cfb02;
-    color: black;
-}
+    &_size, &_fill, &_topings {
+        width: 30%;
+    }
 
-#game {
-    border-collapse: collapse;
-    margin: 30px 0;
-    min-height: 484px;
-}
-
-td {
-    width: 20px;
-    height: 20px;
-    border: 1px solid #eee;
-}
-
-.food {
-    background: #00d021;
-}
-
-.wall {
-    background-color: red;
-}
-
-.snakeBody {
-    background: #e5e5e5;
-}
-
-#message {
-    color: orange;
-    font-size: 24px;
-    width: 100%;
-    text-align: center;
+    &_topings {
+        &_list {
+            list-style: none;
+            padding: 0;
+        }
+    }
 }
