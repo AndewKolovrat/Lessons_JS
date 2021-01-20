@@ -7,10 +7,12 @@ body {
 
 .header {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    //align-items: center;
     background-color: #2e3530;
     &_cart-btn {
-        width: 150px;
+        height: 55px;
+        min-width: 120px;
         padding: 15px;
         margin: 10px;
         color: white;
@@ -69,6 +71,21 @@ body {
         }
     }
 
+}
+// ************************************************************
+.cart {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    &_item {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        border-bottom: 1px solid white;
+    }
+}
+.hidden {
+    display: none;
 }
 // ************************************************************
 .header-hamburger {

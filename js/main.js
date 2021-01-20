@@ -1,19 +1,41 @@
+const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
+
+let getData = (url, cb) => {
+    return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState === 4) {
+                if (xhr.status !== 200) {
+                    reject(() => console.log('error'));
+                } else {
+                    resolve(xhr.responseText);
+                }
+            }
+        }
+        xhr.send();
+        // возможно не правильно понял задание.
+        // я бы не использовал "колбэк", а просто возвращал промис.
+    }).then(result => cb(result));
+};
 class Product {
     constructor(product, img = 'https://placehold.it/250x150') {
-        let { title, price = 0, id } = product;
-        this.title = title;
+        let { product_name, price = 0, id_product } = product;
+        this.title = product_name;
         this.img = img;
         this.price = price;
-        this.id = id;
+        this.id = id_product;
+        this.rendered = false
     }
 
     render() {
+        this.rendered = true;
         return `<li class="products_item">
                   <img src="${this.img}" alt="${this.title}">
                   <div class="products_item_desc">
                       <h3>${this.title}</h3>
                       <p>${this.price}</p>
-                      <button class="products_item_buy-btn">Купить</button>
+                      <button class="products_item_buy-btn" id="buy${this.id}">Купить</button>
                   </div>
               </li>`
     }
@@ -24,89 +46,59 @@ class ProductsList {
         this.data = [];
         this.products = [];
         this.container = document.querySelector(container);
-        this._fetchData();
-        this._render();
-        console.log(`Total product price - ${this.some()}.`);
+        this._fetchData()
+            .then(() => this._render());
     }
 
     getTotalPrice() {
-        let totalPrices = 0;
-        for (let el of this.products) {
-            totalPrices += el.price;
-        }
-        return totalPrices;
+        return this.products.reduce((accum, item) => accum += item.price, 0);
     }
 
     _fetchData() {
-        this.data = [
-            { id: 1, title: 'Notebook', price: 2000 },
-            { id: 2, title: 'Keyboard', price: 200 },
-            { id: 3, title: 'Mouse', price: 100 },
-            { id: 4, title: 'Gamepad' },
-        ];
+        return fetch(`${API}/catalogData.json`)
+            .then(result => result.json())
+            .then(data => {
+                this.data = data;
+                for (let dataEl of this.data) {
+                    this.products.push(new Product(dataEl));
+                }
+            })
+        // для проверки задания
+        // return getData(`${API}/catalogData.json`, (res) => {
+        //     this.data = JSON.parse(res);
+        //     for (let dataEl of this.data) {
+        //         this.products.push(new Product(dataEl));
+        //     }
+        // });
     }
 
     _render() {
-        for (let dataEl of this.data) {
-            const product = new Product(dataEl);
-            this.products.push(product);
+        for (let product of this.products) {
+            if (product.rendered) {
+                continue;
+            }
             this.container.insertAdjacentHTML('beforeend', product.render())
+            // более класивого решения я не нашел :( 
+            document.getElementById(`buy${product.id}`).addEventListener('click', () => this.btnBuyClick(product));
+        }
+        console.log(`Total product price - ${this.getTotalPrice()}.`);
+    }
+
+    btnBuyClick(item) { };
+}
+
+class Shop {
+    constructor() {
+        this.cart = new Cart('.cart');
+        this.list = new ProductsList();
+        this.list.btnBuyClick = (item) => {
+            console.log(item);
+            this.cart.addItem(item);
         }
     }
 }
 
-const list = new ProductsList();
 
-// Класс корзины
-class Cart {
-    constructor() {
-        // хранение данных полученых от сервера
-        this.data = [];
-        // преобразованные данные. Элементы CartItem.
-        this.items = [];
-        // получаем данные корзины
-        _fetchData();
-        // отрисовка корзины
-        this._render();
-    }
-
-    // Добавление товара в корзину
-    addItem(item) { }
-
-    // удаление товара из корзины
-    removeItem(item) { }
-
-    // очистка корзины
-    clear() { }
-
-    // оформление заказа
-    createOrder() { }
-
-    // функция получение полной стоимости корзины
-    getTotalPrice() {
-        let totalPrices = 0;
-        for (let el of this.items) totalPrices += el.some();
-        return totalPrices;
-    }
-    // функция получения данных корзины от сервера
-    _fetchData() { }
-    // функция отрисовки (вывода на страницу) корзины
-    _render() { }
-}
-
-// Класс элемента корзины. наследник Product
-class CartItem extends Product {
-    // конструктор 
-    constructor(product, count = 1) {
-        // добавляем нужную нам переменную
-        // количество товаров на данную позицию.
-        this.count = count;
-    }
-    // позиции возвращает стоимость товара согластно
-    // кол-ву и цене на данную позицию
-    getTotalPrice() {
-        return this.price * this.count;
-    }
-    // позиции для генерации HTML элемента.  
-    render() { }
-}
+window.onload = () => {
+    new Shop();
+};
