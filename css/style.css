@@ -13,7 +13,6 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
   background-color: #2e3530;
-  margin-bottom: 20px;
 }
 
 .header_cart-btn {
@@ -36,6 +35,35 @@ body {
 .header_cart-btn:active {
   background: #9cfb02;
   color: black;
+}
+
+.search-form {
+  background-color: transparent;
+}
+
+.search-form_field {
+  width: 25px;
+  height: 25px;
+  background-color: transparent;
+  color: #fff;
+  background-image: url("../img/icons/search.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.search-form_field:hover, .search-form_field:focus {
+  border: 1px solid #c7b299;
+}
+
+.search-form_field:active {
+  border: 1px solid #fff;
+}
+
+.search-form_field:focus {
+  width: 200px;
+  -webkit-transition: width 0.8s ease-out;
+  transition: width 0.8s ease-out;
+  background-position: right;
 }
 
 .products {

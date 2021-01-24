@@ -30,8 +30,33 @@ body {
         background: #9cfb02;
         color: black;
     }
+}
 
-    margin-bottom: 20px;
+.search-form {
+    background-color: transparent;
+    &_field {
+        width: 25px;
+        height: 25px;
+        background-color: transparent;
+        color: #fff;
+        background-image: url('../img/icons/search.svg');
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    &_field:hover,
+    &_field:focus {
+        border: 1px solid #c7b299;
+    }
+
+    &_field:active {
+        border: 1px solid #fff;
+    }
+
+    &_field:focus {
+        width: 200px;
+        transition: width 0.8s ease-out;
+        background-position: right;
+    }
 }
 
 .products {
