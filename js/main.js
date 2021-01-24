@@ -1,23 +1,5 @@
 const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
 
-let getData = (url, cb) => {
-    return new Promise((resolve, reject) => {
-        const xhr = new XMLHttpRequest();
-        xhr.open('GET', url, true);
-        xhr.onreadystatechange = () => {
-            if (xhr.readyState === 4) {
-                if (xhr.status !== 200) {
-                    reject(() => console.log('error'));
-                } else {
-                    resolve(xhr.responseText);
-                }
-            }
-        }
-        xhr.send();
-        // возможно не правильно понял задание.
-        // я бы не использовал "колбэк", а просто возвращал промис.
-    }).then(result => cb(result));
-};
 class Product {
     constructor(product, img = 'https://placehold.it/250x150') {
         let { product_name, price = 0, id_product } = product;
@@ -63,13 +45,6 @@ class ProductsList {
                     this.products.push(new Product(dataEl));
                 }
             })
-        // для проверки задания
-        // return getData(`${API}/catalogData.json`, (res) => {
-        //     this.data = JSON.parse(res);
-        //     for (let dataEl of this.data) {
-        //         this.products.push(new Product(dataEl));
-        //     }
-        // });
     }
 
     _render() {
