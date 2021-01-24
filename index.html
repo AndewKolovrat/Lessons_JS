@@ -11,6 +11,18 @@
 <body>
     <header class="header">
         <button class="header_cart-btn">Cart</button>
+        <ul class="hidden cart">
+            <li class="cart_item">
+                <h4>Имя товара</h4>
+                <p>Цена ед.</p>
+                <p>Количество</p>
+                <p>Цена за позицию</p>
+                <p>Удалить позицию</p>
+            </li>
+        </ul>
+        <form action="#" class="search-form">
+            <input type="search" class="search-form_field">
+        </form>
     </header>
     <main class="main">
         <ul class="products"></ul>
@@ -18,7 +30,9 @@
 
     <footer class="footer"></footer>
 
+    <script src="js/shop.js"></script>
     <script src="js/main.js"></script>
+
 </body>
 
 </html>
