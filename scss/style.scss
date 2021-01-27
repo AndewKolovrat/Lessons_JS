@@ -10,6 +10,7 @@ body {
     justify-content: space-between;
     //align-items: center;
     background-color: #2e3530;
+    border-bottom: 2px solid black;
     &_cart-btn {
         height: 55px;
         min-width: 120px;
@@ -97,6 +98,41 @@ body {
     }
 
 }
+
+.footer {
+    background-color: #2e3530;
+    border-top: 2px solid black;
+    padding: 20px;
+    
+    &_feedback {
+        padding: 0 50px 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &_name,
+        &_email,
+        &_phone {
+            width: 500px;
+            height: 40px;
+            margin-bottom: 20px;
+        }
+        &_msg {
+            width: 500px;
+            height: 170px;
+            margin-bottom: 20px;
+            resize: none;
+        }
+        &_btn {
+            width: 140px;
+            height: 40px;
+        }
+    }
+}
+
+.warning {
+    border:  2px solid red;
+}
+
 // ************************************************************
 .cart {
     display: flex;
