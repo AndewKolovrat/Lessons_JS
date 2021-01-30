@@ -1,73 +1,89 @@
-const txt = `One: 'Hi Mary.' 
-    Two: 'Oh, hi.'
-    One: 'How are you doing?'
-    Two: 'I'm doing alright.How about you ?'
-    One: 'Not too bad. The weather is great isn't it ?'
-    Two: 'Yes. It's absolutely beautiful today.'
-    One: 'I wish it was like this more frequently.'
-    Two: 'Me too.'
-    One: 'So where are you going now?'
-    Two: 'I'm going to meet a friend of mine at the department store.'
-    One: 'Going to do a little shopping?'
-    Two: 'Yeah, I have to buy some presents for my parents.'
-    One: 'What's the occasion ?'
-    Two: 'It's their anniversary.'
-    One: 'That's great.Well, you better get going.You don't want to be late.'
-    Two: 'I'll see you next time.'
-    One: 'Sure. Bye.'`;
+const form = document.querySelector('.footer_feedback');
+const patterns = {
+    name: /^[\w]+$/i,
+    phone: /^\+\d\([\d]{3}\)[\d]{3}\-[\d]{4}$/i,
+    mail: /^[\w]{1}[\w\.\-]+@[\w]+\.[a-z]{2,4}$/i
+}
+const validate = new Validate(form, ['name', 'phone', 'mail'], patterns);
+form.addEventListener('submit', e => {
+    if (!validate.check()) {
+        e.preventDefault();
+    }
+});
 
-window.onload = () => {
-    const list = new ProductsList(new Cart());
-    // хром (CORS) ругается на запросы к файловой системе :(
-    //list.getJson('./getProducts.json').then(data => list.handleData(data));
-
-    // ищем все кавычки перед которыми не граница слова
-    console.log(txt.replace(/\B\'/gm, '"'));
-
-    const form = document.querySelector('.footer_feedback'),
-        name = form.querySelector('.footer_feedback_name'),
-        phone = form.querySelector('.footer_feedback_phone'),
-        mail = form.querySelector('.footer_feedback_email'),
-        msg = form.querySelector('.footer_feedback_msg'),
-        wrg = form.querySelector('.footer_feedback_warning');
-
-    msg.value = txt.replace(/\B\'/gm, '"');
-
-    form.querySelector('.footer_feedback_btn').addEventListener('click', event => {
-        // все латинские буквы, цифры и знак подчеркивания
-        let re = /^[\w]+$/i;
-        if (!re.test(name.value)) {
-            wrg.textContent = `Warning! Wrong name field!`;
-            name.classList.add('warning');
+const Shop = {
+    data() {
+        return {
+            API: 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses',
+            catalogUrl: '/catalogData.json',
+            cartUrl: '/getBasket.json',
+            products: [],
+            cart: [],
+            imgCatalog: 'https://placehold.it/200x150',
+            isVisibleCart: false,
+            search: ''
         }
-        else {
-            name.classList.remove('warning');
-            wrg.textContent = '';
+    },
+    computed: {
+        getReg() {
+            return new RegExp(this.search, 'i');
         }
-
-        // +цифра(3 цифры)3цифры-4цифры
-        re = /^\+\d\([\d]{3}\)[\d]{3}\-[\d]{4}$/i;
-        if (!re.test(phone.value)) {
-            wrg.textContent = `Warning! Wrong phone field!`;
-            phone.classList.add('warning');
+    },
+    methods: {
+        getJson(url) {
+            return fetch(url)
+                .then(result => result.json())
+                .catch(error => console.log(error));
+        },
+        addProductToCart(product) {
+            this.getJson(this.API + '/addToBasket.json')
+                .then(data => {
+                    if (data.result) {
+                        let find = this.cart.find(el => el.id_product === product.id_product);
+                        if (find) {
+                            find.quantity += 1;
+                        }
+                        else {
+                            this.cart.push(this._createCartItem(product));
+                        }
+                    }
+                });
+        },
+        _createCartItem(product) {
+            return Object.assign({ quantity: 1 }, product)
+        },
+        removeProductFromCart(product) {
+            this.getJson(this.API + '/deleteFromBasket.json')
+                .then(data => {
+                    if (data.result) {
+                        product.quantity -= 1;
+                        if (!product.quantity) {
+                            this.cart.splice(this.cart.indexOf(product), 1);
+                        }
+                    }
+                })
         }
-        else {
-            phone.classList.remove('warning');
-            wrg.textContent = '';
-        }
-
-        // (1 символ) (от 1 символа, точки или тирэ)
-        // ( @ ) ( от 1 символа ) ( точка ) ( от 2х до 4х символов )
-        re = /^[\w]{1}[\w\.\-]+@[\w]+\.[a-z]{2,4}$/i;
-        if (!re.test(mail.value)) {
-            wrg.textContent = `Warning! Wrong mail field!`;
-            mail.classList.add('warning');
-        }
-        else {
-            mail.classList.remove('warning');
-            wrg.textContent = '';
-        }
-
-    });
-
+    },
+    mounted() {
+        this.getJson(`${this.API + this.catalogUrl}`)
+            .then(data => {
+                for (let product of data) {
+                    this.products.push(product);
+                }
+            });
+        this.getJson(`getProducts.json`)
+            .then(data => {
+                for (let product of data) {
+                    this.products.push(product);
+                }
+            });
+        this.getJson(this.API + this.cartUrl)
+            .then(data => {
+                for (let cartItem of data.contents) {
+                    this.cart.push(cartItem);
+                }
+            });
+    }
 };
+
+Vue.createApp(Shop).mount(`#shop`)
