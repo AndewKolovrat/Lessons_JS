@@ -44,11 +44,13 @@ const Shop = {
                             find.quantity += 1;
                         }
                         else {
-                            product.quantity = 1;
-                            this.cart.push(product);
+                            this.cart.push(this._createCartItem(product));
                         }
                     }
                 });
+        },
+        _createCartItem(product) {
+            return Object.assign({ quantity: 1 }, product)
         },
         removeProductFromCart(product) {
             this.getJson(this.API + '/deleteFromBasket.json')

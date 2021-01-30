@@ -27,6 +27,7 @@
                 <p>Цена за позицию</p>
                 <p>Удалить позицию</p>
             </li>
+            <h3 v-if="!cart.length" align='center'>Cart is empty</h3>
             <li class="header_cart_item" v-for="el of cart" :key="el.id_product">
                 <h3>{{ el.product_name }}</h3>
                 <p>{{ el.price }}</p>
