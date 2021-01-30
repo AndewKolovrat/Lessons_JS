@@ -13,43 +13,23 @@
     <header class="header">
 
         <div class="header_top">
-            <button class="header_cart-btn" @click="isVisibleCart=!isVisibleCart">Cart ({{cart.length}})</button>
-            <form action="#" class="search-form">
-                <input type="search" v-model="search" class="search-form_field">
-            </form>
+
+            <button class="header_cart-btn" @click="$refs.cart.isVisibleCart=!$refs.cart.isVisibleCart">
+                <!-- Cart ( {{ $root.$refs.cart.getCartItemsCount }}) -->
+                Cart
+            </button>
+
+            <Search ref="search"></Search>
+
         </div>
 
-        <ul class="header_cart" v-show="isVisibleCart">
-            <li class="header_cart_item">
-                <h4>Имя товара</h4>
-                <p>Цена ед.</p>
-                <p>Количество</p>
-                <p>Цена за позицию</p>
-                <p>Удалить позицию</p>
-            </li>
-            <h3 v-if="!cart.length" align='center'>Cart is empty</h3>
-            <li class="header_cart_item" v-for="el of cart" :key="el.id_product">
-                <h3>{{ el.product_name }}</h3>
-                <p>{{ el.price }}</p>
-                <p>{{ el.quantity }}</p>
-                <p>{{ el.price * el.quantity }}</p>
-                <button @click="removeProductFromCart(el)">Delete</button>
-            </li>
-        </ul>
+        <Cart ref="cart"></Cart>
 
     </header>
 
     <main class="main">
-        <ul class="products">
-
-            <li class="products_item" v-for="el of products" :key="el.id_product" v-show="getReg.test(el.product_name)">
-                <img :src="imgCatalog" :alt="el.product_name">
-                <h3>{{ el.product_name }}</h3>
-                <p>{{ el.price }}</p>
-                <button class="products_item_buy-btn" @click="addProductToCart(el)">Купить</button>
-            </li>
-
-        </ul>
+        <Error ref="error"></Error>
+        <Products ref="catalog"></Products>
     </main>
 
     <footer class="footer">
@@ -66,9 +46,10 @@
         </form>
     </footer>
 
+    <script src="js/Validate.js"></script>
     <script src="https://unpkg.com/vue@next"></script>
-    <script src="js/validate.js"></script>
-    <script src="js/main.js"></script>
+    <script type="module" defer src="js/main.js"></script>
+
 </body>
 
 </html>
