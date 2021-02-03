@@ -14,12 +14,18 @@ export const Products = {
     mounted() {
         this.$root.getJson(`${this.$root.API + this.catalogUrl}`)
             .then(data => {
+                if (!data) {
+                    return;
+                }
                 for (let product of data) {
                     this.products.push(product);
                 }
             });
-        this.$root.getJson(`getProducts.json2`)
+        this.$root.getJson(`getProducts.json`)
             .then(data => {
+                if (!data) {
+                    return;
+                }
                 for (let product of data) {
                     this.products.push(product);
                 }

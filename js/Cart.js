@@ -58,6 +58,9 @@ export const Cart = {
     mounted() {
         this.$root.getJson(`${this.$root.API + this.catalogUrl}`)
             .then(data => {
+                if (!data) {
+                    return;
+                }
                 for (let item of data.contents) {
                     this.items.push(item);
                 }
