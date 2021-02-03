@@ -32,7 +32,7 @@ class Validate {
                 this._formFields.push(field);
             }
         }
-        this._warningMsg = form.querySelector('#warningMsg');
+        this._warningMsg = this.form.querySelector('#warningMsg');
     }
 
     _watchField(field) {

@@ -6,69 +6,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lesson_1</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/Validate.js" defer></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script type="module" defer src="js/main.js"></script>
 </head>
 
-<body id="shop">
+<body>
 
-    <header class="header">
+    <div class="shop" id="shop">
 
-        <div class="header_top">
-            <button class="header_cart-btn" @click="isVisibleCart=!isVisibleCart">Cart ({{cart.length}})</button>
-            <form action="#" class="search-form">
-                <input type="search" v-model="search" class="search-form_field">
+        <header class="header">
+
+            <div class="header_top">
+
+                <button class="header_cart-btn" @click="$refs.cart.showOrHide()">
+                    Cart
+                </button>
+
+                <Search ref="search"></Search>
+
+            </div>
+
+            <Cart ref="cart"></Cart>
+
+        </header>
+
+        <main class="main">
+            <Error ref="error"></Error>
+            <Products ref="catalog"></Products>
+        </main>
+
+        <footer class="footer">
+            <form action="#" class="footer_feedback">
+                <input id="name" type="text" placeholder="Your name:" class="footer_feedback_name">
+                <input id="phone" type="text" placeholder="Your phone: +7(000)000-0000" class="footer_feedback_phone">
+                <input id="mail" type="text"
+                    placeholder="Your email: mymail@mail.ru или my.mail@mail.ru или my-mail@mail.ru"
+                    class="footer_feedback_email">
+                <textarea name="message" placeholder="Your message:" cols="30" rows="10"
+                    class="footer_feedback_msg"></textarea>
+                <p id="warningMsg" class="footer_feedback_warning"></p>
+                <button class="footer_feedback_btn">Submit</button>
             </form>
-        </div>
+        </footer>
 
-        <ul class="header_cart" v-show="isVisibleCart">
-            <li class="header_cart_item">
-                <h4>Имя товара</h4>
-                <p>Цена ед.</p>
-                <p>Количество</p>
-                <p>Цена за позицию</p>
-                <p>Удалить позицию</p>
-            </li>
-            <h3 v-if="!cart.length" align='center'>Cart is empty</h3>
-            <li class="header_cart_item" v-for="el of cart" :key="el.id_product">
-                <h3>{{ el.product_name }}</h3>
-                <p>{{ el.price }}</p>
-                <p>{{ el.quantity }}</p>
-                <p>{{ el.price * el.quantity }}</p>
-                <button @click="removeProductFromCart(el)">Delete</button>
-            </li>
-        </ul>
+    </div>
 
-    </header>
-
-    <main class="main">
-        <ul class="products">
-
-            <li class="products_item" v-for="el of products" :key="el.id_product" v-show="getReg.test(el.product_name)">
-                <img :src="imgCatalog" :alt="el.product_name">
-                <h3>{{ el.product_name }}</h3>
-                <p>{{ el.price }}</p>
-                <button class="products_item_buy-btn" @click="addProductToCart(el)">Купить</button>
-            </li>
-
-        </ul>
-    </main>
-
-    <footer class="footer">
-        <form action="#" class="footer_feedback">
-            <input id="name" type="text" placeholder="Your name:" class="footer_feedback_name">
-            <input id="phone" type="text" placeholder="Your phone: +7(000)000-0000" class="footer_feedback_phone">
-            <input id="mail" type="text"
-                placeholder="Your email: mymail@mail.ru или my.mail@mail.ru или my-mail@mail.ru"
-                class="footer_feedback_email">
-            <textarea name="message" placeholder="Your message:" cols="30" rows="10"
-                class="footer_feedback_msg"></textarea>
-            <p id="warningMsg" class="footer_feedback_warning"></p>
-            <button class="footer_feedback_btn">Submit</button>
-        </form>
-    </footer>
-
-    <script src="https://unpkg.com/vue@next"></script>
-    <script src="js/validate.js"></script>
-    <script src="js/main.js"></script>
 </body>
 
 </html>
