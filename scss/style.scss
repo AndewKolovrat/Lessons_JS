@@ -9,7 +9,6 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    //align-items: center;
     background-color: #2e3530;
     border-bottom: 2px solid black;
 
@@ -28,6 +27,7 @@ body {
             align-items: center;
             justify-content: space-around;
             border-bottom: 1px solid white;
+            padding: 5px;
         }
     }
 

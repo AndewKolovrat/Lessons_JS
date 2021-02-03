@@ -16,6 +16,9 @@ export const Cart = {
         _createCartItem(product) {
             return Object.assign({ quantity: 1 }, product)
         },
+        showOrHide() {
+            this.isVisibleCart = !this.isVisibleCart;
+        },
         addProductToCart(product) {
             this.$root.getJson(this.$root.API + '/addToBasket.json')
                 .then(data => {

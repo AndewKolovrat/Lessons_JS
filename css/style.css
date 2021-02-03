@@ -54,6 +54,7 @@ body {
   -ms-flex-pack: distribute;
       justify-content: space-around;
   border-bottom: 1px solid white;
+  padding: 5px;
 }
 
 .header_cart-btn {

@@ -18,7 +18,7 @@ export const Products = {
                     this.products.push(product);
                 }
             });
-        this.$root.getJson(`getProducts.json`)
+        this.$root.getJson(`getProducts.json2`)
             .then(data => {
                 for (let product of data) {
                     this.products.push(product);

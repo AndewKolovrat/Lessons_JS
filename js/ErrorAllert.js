@@ -12,8 +12,10 @@ export const Error = {
             this.error = '';
         }
     },
-    template: `<div class='error' v-show="this.error" align="center">
-                    <strong> Error </strong>
-                    <slot>{{error}}</slot>
-                </div> `
+    template: `<div class="error-block" v-if="error">
+                <p class="error-msg">
+                    <button class="close-btn" @click="setError('')">&times;</button>
+                    {{error}}
+                </p>
+            </div>`
 };
