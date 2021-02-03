@@ -1,2 +1,2 @@
 git rm --cached filename
-node_modules\
+/node_modules
