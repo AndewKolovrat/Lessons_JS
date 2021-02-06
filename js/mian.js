@@ -1,4 +1,4 @@
-import { division, addition, subtraction, multiplying } from '../js/math.js';
+import { division } from './math.js'
 class Calculator {
     constructor(container) {
         this.container = document.querySelector(container);
