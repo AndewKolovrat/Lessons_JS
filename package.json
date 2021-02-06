@@ -1,0 +1,22 @@
+{
+  "name": "lessons_js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndewKolovrat/Lessons_JS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndewKolovrat/Lessons_JS/issues"
+  },
+  "homepage": "https://github.com/AndewKolovrat/Lessons_JS#readme",
+  "dependencies": {
+    "jasmine": "^3.6.4"
+  }
+}

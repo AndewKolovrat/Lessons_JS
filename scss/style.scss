@@ -1,1 +1,54 @@
-//
+body {
+    font-family: 'SF Pro Display', sans-serif;
+}
+header {
+    background-color: #2f2a2d;
+    color: #fafafa;
+    padding: 30px 80px;
+    text-align: center;
+}
+button:focus {
+    outline: none;
+}
+
+main {
+    width: 1024px;
+    margin: 0 auto;
+}
+
+.calc {
+    margin: 0 auto;
+    padding: 10px;
+    width: 245px;
+    &_textarea {
+        width: 100%;
+        resize: none;
+        font-size: 20px;
+        height: 2rem;
+        text-align: end;
+        padding-top: 5px;
+    }
+    &_ul {
+        list-style-type: none;
+        padding-inline-start: 1px;
+        &_button {
+            width: 60px;
+            height: 60px;
+            background-color: #fafafa;
+            padding: 10px 20px;
+            border: 2px solid transparent;
+            color: #2f2a2d;
+            border-radius: 5px;
+            transition: all ease-in-out .4s;
+            cursor: pointer;
+            display: inline-block;
+            text-align: center;
+            line-height: 60px;
+            user-select: none;
+        }
+        &_button:hover {
+            background-color: transparent;
+            border-color: black;
+        }
+    }
+}
