@@ -1,24 +1,43 @@
 {
-  "name": "lessons_js",
+  "name": "express_app",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/server/server.js",
   "scripts": {
+    "buildDev": "rmdir /s /q dist && webpack --mode development --config webpack.server.config.js && webpack --mode development --config webpack.dev.config.js",
+    "buildProd": "rmdir /s /q dist && webpack --mode production --config webpack.server.config.js && webpack --mode production --config webpack.prod.config.js",
+    "start": "nodemon dist/server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/AndewKolovrat/Lessons_JS.git"
+  "nodemonConfig": {
+    "ignore": [
+      "*.json"
+    ]
   },
-  "author": "AndrewKolovrat",
-  "license": "UNLICENSED",
-  "bugs": {
-    "url": "https://github.com/AndewKolovrat/Lessons_JS/issues"
-  },
-  "homepage": "https://github.com/AndewKolovrat/Lessons_JS#readme",
+  "author": "",
+  "license": "ISC",
   "dependencies": {
+    "core-js": "^3.8.3",
     "express": "^4.17.1",
     "moment": "^2.29.1",
-    "nodemon": "^2.0.7"
+    "regenerator-runtime": "^0.13.7",
+    "whatwg-fetch": "^3.5.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.13",
+    "@babel/preset-env": "^7.12.13",
+    "babel-loader": "^8.2.2",
+    "copy-webpack-plugin": "^7.0.0",
+    "css-loader": "^5.0.1",
+    "css-minimizer-webpack-plugin": "^1.2.0",
+    "file-loader": "^6.2.0",
+    "html-loader": "^1.3.2",
+    "html-webpack-plugin": "^5.0.0",
+    "mini-css-extract-plugin": "^1.3.5",
+    "style-loader": "^2.0.0",
+    "terser-webpack-plugin": "^5.1.1",
+    "webpack": "^5.20.2",
+    "webpack-cli": "^4.5.0",
+    "webpack-node-externals": "^2.5.2"
   }
 }

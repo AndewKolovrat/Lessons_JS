@@ -1,0 +1,38 @@
+Html Webpack Plugin:
+<pre>
+  Error: webpack://express_app/./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js?:93
+    var style = document.createElement('style');
+                ^
+  ReferenceError: document is not defined
+  
+  - injectStylesIntoStyleTag.js?:93 insertStyleElement
+    [.]/[style-loader]/dist/runtime/injectStylesIntoStyleTag.js?:93:15
+  
+  - injectStylesIntoStyleTag.js?:208 addStyle
+    [.]/[style-loader]/dist/runtime/injectStylesIntoStyleTag.js?:208:13
+  
+  - injectStylesIntoStyleTag.js?:81 modulesToDom
+    [.]/[style-loader]/dist/runtime/injectStylesIntoStyleTag.js?:81:18
+  
+  - injectStylesIntoStyleTag.js?:239 module.exports
+    [.]/[style-loader]/dist/runtime/injectStylesIntoStyleTag.js?:239:25
+  
+  - style.css?:16 eval
+    webpack://express_app/./src/public/css/style.css?:16:120
+  
+  - index.html:151 Object../src/public/css/style.css
+    E:/repository/Lessons_JS/src/public/index.html:151:1
+  
+  - index.html:196 __webpack_require__
+    E:/repository/Lessons_JS/src/public/index.html:196:41
+  
+  - loader.js:3 eval
+    [index.html?.]/[html-webpack-plugin]/lib/loader.js:3:34
+  
+  - index.html:140 Object../node_modules/html-webpack-plugin/lib/loader.js!./src/public/index.html
+    E:/repository/Lessons_JS/src/public/index.html:140:1
+  
+  - index.html:196 __webpack_require__
+    E:/repository/Lessons_JS/src/public/index.html:196:41
+  
+</pre>

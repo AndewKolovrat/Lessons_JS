@@ -5,7 +5,7 @@ import { Search } from './Search.js';
 import { Error } from './ErrorAllert.js';
 import { FeedBack } from './feedback.js';
 
-const Shop = {
+export const Shop = {
     components: {
         Products,
         Cart,

@@ -1,7 +1,7 @@
 const fs = require('fs');
 const moment = require('moment');
 
-const file = 'cart.log';
+const file = 'src/server/cart.log';
 
 const log = (action, cartItem) => {
     const text = `${moment().format()} - ${action}: item of cart ${cartItem.product_name} (id:${cartItem.id_product})\n`;
