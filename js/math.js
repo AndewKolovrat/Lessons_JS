@@ -10,3 +10,10 @@ export const subtraction = (arg, arg2) => {
 export const multiplying = (arg, arg2) => {
     return +arg * +arg2;
 };
+
+// module.exports = {
+//     division: division,
+//     addition: addition,
+//     subtraction: subtraction,
+//     multiplying: multiplying
+// };

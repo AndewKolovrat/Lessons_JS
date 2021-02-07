@@ -2,7 +2,7 @@
   "name": "lessons_js",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./js/main.js",
   "scripts": {
     "test": "jasmine spec/main.spec.js"
   },
